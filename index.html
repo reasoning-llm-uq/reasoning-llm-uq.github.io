@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WoMAP: World Models For Embodied Open-Vocabulary Object Localization</title>
+
+  <!--  =====  FONTS & ICONS  =====  -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="icon" href="./static/icon.png" />
+
+  <!--  =====  CSS  =====  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+  <style>
+    /* --- GLOBAL --- */
+    body{background:#fff;font-family:"Noto Sans",sans-serif;font-size:16px; line-height:1.5;color:#333;}
+    section{padding:2.5rem 0;}
+
+    /* --- SECTION COLORS --- */
+    .section-gray{background:#f7f7f7;}
+
+    /* --- TYPOGRAPHY & LINKS --- */
+    .task-title{margin-bottom:1rem;font-weight:600;}
+    .publication-authors{margin-bottom:1rem;} /* space below authors */
+    .publication-authors a{color:#3273dc;text-decoration:none;white-space:nowrap;}
+    .publication-authors a:hover{text-decoration:underline;}
+
+    /* --- HERO & SPACING TWEAKS --- */
+    .publication-title{margin-top:0.0rem;padding-top:0.0rem;}
+    .hero{padding-top:0.75rem;padding-bottom:0.5rem;} /* tighter gap above overview */
+    .hero-body{padding:1.5rem;} 
+    #overview.section{padding-top:0.75rem;} /* tighter gap below hero */
+    .publication-links{margin-top:1.5rem;margin-bottom:1.5rem;} /* gap between authors/icons & icons/logo */
+    figure.lab-logo{margin-top:0.75rem;} /* gap between icons and Princeton logo */
+    /* #sim-robot.section{padding-bottom:0.1rem;} gap above simulation section */
+    #bibtex.section-{padding-top:0rem;} /* gap above BibTeX section */
+
+    /* --- SLICK ARROWS --- */
+    .slick-prev:before,.slick-next:before{color:#3273dc;font-size:32px;}
+
+    /* --- THUMBNAILS --- */
+    .video-thumb{cursor:pointer;border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,0.1);margin:0 8px;}
+    .video-thumb video{width:100%;height:auto;display:block;}
+
+    /* --- STAND‑ALONE VIDEOS --- */
+    .overview-video,.sim-video{width:100%;height:auto;border-radius:0;box-shadow:none;pointer-events:none;}
+
+    /* --- LAYOUT HELPERS --- */
+    .task-block{margin-bottom:3rem;}
+    .task-carousel{margin-top:1rem;}
+
+    /* --- CONTENT WIDTH CONSISTENCY --- */
+    .content-container{max-width:960px;margin:0 auto;}
+
+    /* --- PDF EMBED --- */
+    .pdf-container{margin-top:1.5rem;}
+    .pdf-container object{width:100%;height:600px;border:none;}
+
+    /* --- REAL EXP IMG --- */
+    .real-exp-img{width:100%;height:auto;max-width:100%;}
+    /* --- LINK COLOR (lighter blue, closer to default hyperlinks) --- */
+
+    .publication-authors a:hover{
+      text-decoration:underline;
+    }
+
+    /* --- HERO ↔ OVERVIEW GAP (shrink) --- */
+    .hero{padding-bottom:0rem;}         /* was 0.5rem */
+    #overview.section{padding-top:0rem;padding-bottom:0rem;}/* was 0.75rem */
+
+    /* --- REAL-ROBOT ↔ SIMULATION GAP (shrink) --- */
+    #real-robot.section{padding-top:2.5rem;} /* default Bulma ≈2.5rem */
+    #real-robot.section{padding-bottom:2.5rem;} /* default Bulma ≈2.5rem */
+    #sim-robot.section {padding-top:2.5rem;}    /* default Bulma ≈2.5rem */
+
+    /* --- SIMULATION ↔ BIBTEX GAP (shrink) --- */
+    #BibTeX.section{padding-top:0.1rem;}        /* tighten above BibTeX */
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO with title & authors ===== -->
+  <section class="hero section">
+    <div class="hero-body">
+      <div class="container is-max-widescreen has-text-centered">
+        <h1 class="title is-2 publication-title">WoMAP: World Models For Embodied Open-Vocabulary Object Localization</h1>
+
+        <!-- ===== AUTHORS (three rows, no underscores) ===== -->
+        <div class="is-size-5 publication-authors">
+          <div>
+            <span class="author-block"><a href="https://tenny-yinyijun.github.io/">Tenny&nbsp;Yin*</a></span>,
+            <span class="author-block"><a href="https://may0mei.github.io/">Zhiting&nbsp;Mei</a></span>,
+            <span class="author-block"><a href="#">Tao&nbsp;Sun</a></span>,
+            <span class="author-block"><a href="https://lihzha.github.io/">Lihan&nbsp;Zha</a></span>
+          </div>
+          <div>
+            <span class="author-block"><a href="#">Miyu&nbsp;Yamane</a></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/zhou-emily/">Emily&nbsp;Zhou</a></span>,
+            <span class="author-block"><a href="https://www.linkedin.com/in/jeremy-bao/">Jeremy&nbsp;Bao</a></span>,
+            <span class="author-block"><a href="#">Ola&nbsp;Shorinwa*</a></span>,
+            <span class="author-block"><a href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
+          </div>
+        </div>
+
+        <!-- ===== RESOURCE ICONS ===== -->
+        <div class="publication-links">
+          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+          </a>
+          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code (Coming Soon!)</span>
+          </a>
+          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fab fa-youtube"></i></span><span>Video (Coming Soon!)</span>
+          </a>
+        </div>
+
+        <!-- ===== LAB LOGO ===== -->
+        <figure class="image is-inline-block lab-logo">
+          <img src="static/irom_princeton.png" alt="IROM Lab logo" style="max-width:500px;">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OVERVIEW ===== -->
+  <section id="overview" class="section">
+    <div class="container is-max-desktop content-container has-text-centered">
+      <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/overviews/overview.jpg">
+        <source src="static/videos/overviews/overview.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:1rem;">We introduce <strong>World&nbsp;Models&nbsp;for&nbsp;Active&nbsp;Perception&nbsp;(WoMAP)</strong>, a recipe for training open-vocabulary object localization policies that are grounded in the physical world.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== ABSTRACT ===== -->
+  <section id="abstract" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <p>
+        Language-instructed active object localization remains a critical challenge for robots, requiring efficient exploration of partially observable environments. However, state-of-the-art approaches either struggle to generalize beyond demonstration datasets (e.g., imitation learning methods) or fail to generate physically grounded actions (e.g., VLMs). To address these limitations, we introduce <strong>WoMAP</strong>: a recipe for training open-vocabulary object localization policies that: (i) uses a Gaussian Splatting-based real-to-sim-to-real pipeline for scalable data generation without the need for expert demonstrations, (ii) distills dense rewards signals from open-vocabulary object detectors, and (iii) leverages a latent world model for dynamics and rewards prediction to ground high-level action proposals at inference time. <strong>TODO: add new results</strong>
+      </p>
+      <!-- <br>
+      <video id="summary-video" class="shadow" controls preload="metadata" width="100%" poster="static/thumbnails/talk_video.jpg">
+        <source src="static/videos/talk_video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video> -->
+    </div>
+  </section>
+
+  <!-- ===== DATA COLLECTION ===== -->
+  <section id="data-collection" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Scalable Data Collection</h2>
+      <video class="overview-video" autoplay loop muted playsinline>
+        <source src="static/videos/overviews/gaussian-splat.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <br>
+      <p>
+      We introduce a scalable real-to-sim-to-real data generation pipeline that utilizes only a few real-world videos to train Gaussian Splats, render novel observations from sampled camera positions, and annotate each observation with a pretrained object detector to offer dense training signals.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WORLD MODEL ===== -->
+  <section id="world-model-design" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">World Model Design</h2>
+      <video class="overview-video" autoplay loop muted playsinline>
+        <source src="static/videos/overviews/world-model.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <br>
+      <p>
+        We propose a world model architecture that combines a latent dynamics model with a reward model. The dynamics model predicts the next state and the reward model predicts the reward signal based on the current state and action. This architecture allows us to ground high-level action proposals in the physical world.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIMENT RESULTS ===== -->
+  <section id="experiment-results" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Experiment Results</h2>
+      <p><strong>TODO</strong>
+      </p>
+      <br>
+      <div class="task-block" id="task-1">
+        <h3 class="title is-4 task-title">PyBullet Simulation Experiments</h3>
+        <div class="task-carousel">
+          <!-- Eight videos with poster extracted via Python script -->
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/sim0.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/sim1.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/sim2.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/sim3.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer4.jpg" preload="metadata"><source src="static/videos/experiments/sim4.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/sim5.mp4" type="video/mp4" /></video></div>
+        </div>
+      </div>
+      <div class="task-block" id="task-1">
+        <h3 class="title is-4 task-title">Gaussian Splat Simulation Experiments</h3>
+        <div class="task-carousel">
+          <!-- Eight videos with poster extracted via Python script -->
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/gs0.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs1.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs2.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/gs3.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer4.jpg" preload="metadata"><source src="static/videos/experiments/gs4.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/gs5.mp4" type="video/mp4" /></video></div>
+        </div>
+      </div>
+      <div class="task-block" id="task-2">
+        <h3 class="title is-4 task-title">Real Experiments</h3>
+        <div class="task-carousel">
+          <!-- Eight videos -->
+          <!-- <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div> -->
+          <!-- <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div> -->
+        </div>
+      </div>
+    </div>
+    <p class="has-text-justified content-container">
+      We test FSC in both training-from-scratch settings (using Diffusion&nbsp;Policy) and fine-tuning settings (using &pi;<sub>0</sub>). FSC solves these tasks even under compounded environment-factor variations, outperforming baselines by up to&nbsp;26%. FSC-Proxy achieves nearly the
+      same high success rate as FSC while eliminating the need for any on-hardware policy execution.
+    </p>
+    <br>
+
+    <div class="row content-container">
+      <div class="col-md-12 text-center">
+          <ul class="list-inline">
+              <li>
+                  <img src="static/pybullet_results.png" class="real-exp-img" alt="Pybullet experiment results" />
+                  <img src="static/gsplat_results.png" class="real-exp-img" alt="Gsplat experiment results" />
+              </li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GENERALIZATION PROPERTIES ===== -->
+  <section id="generalization-properties" class="section">
+    <div class="container is-max-desktop content-container">
+      <h2 class="title is-3 has-text-centered">Generalization Properties</h2>
+      <p><strong>TODO: 4 videos in a row, 2 for lighting, 2 for table texture</strong></p>
+      <br>
+      <p><strong>TODO: 4 videos in a 2 by 2 grid, scatter plot for query/object relevance on the right</strong></p>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <!-- <pre><code>@misc{zha2025guidingdatacollectionfactored,
+        title={Guiding Data Collection via Factored Scaling Curves}, 
+        author={Lihan Zha and Apurva Badithela and Michael Zhang and Justin Lidard and Jeremy Bao and Emily Zhou and David Snyder and Allen Z. Ren and Dhruv Shah and Anirudha Majumdar},
+        year={2025},
+        eprint={2505.07728},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO},
+        url={https://arxiv.org/abs/2505.07728}, 
+      }</code></pre> -->
+    </div>
+  </section>
+  <br>
+  <center class="is-size-10">
+    The website design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
+        class="dnerf">Nerfies</span></a>.
+  </center>
+  <br>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $(function(){
+      // Init carousels (only those still using .task-carousel wrappers)
+      $('.task-carousel').slick({
+        slidesToShow:4,
+        slidesToScroll:1,
+        infinite:false,
+        arrows:true,
+        dots:false,
+        lazyLoad:'ondemand',
+        touchMove:true,
+        responsive:[
+          {breakpoint:1024,settings:{slidesToShow:3}},
+          {breakpoint:768, settings:{slidesToShow:2}},
+          {breakpoint:480, settings:{slidesToShow:1}}
+        ]
+      });
+
+      // Horizontal track‑pad scroll → carousel navigation; let vertical scroll bubble up
+      $('.task-carousel').on('wheel',function(e){
+        const deltaX = e.originalEvent.deltaX;
+        const deltaY = e.originalEvent.deltaY;
+        if(Math.abs(deltaX) > Math.abs(deltaY)){
+          e.preventDefault();
+          $(this).slick(deltaX < 0 ? 'slickPrev' : 'slickNext');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
