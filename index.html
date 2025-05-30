@@ -148,7 +148,7 @@
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Abstract</h2>
       <p>
-        Language-instructed active object localization remains a critical challenge for robots, requiring efficient exploration of partially observable environments. However, state-of-the-art approaches either struggle to generalize beyond demonstration datasets (e.g., imitation learning methods) or fail to generate physically grounded actions (e.g., VLMs). To address these limitations, we introduce <strong>WoMAP</strong>: a recipe for training open-vocabulary object localization policies that: (i) uses a Gaussian Splatting-based real-to-sim-to-real pipeline for scalable data generation without the need for expert demonstrations, (ii) distills dense rewards signals from open-vocabulary object detectors, and (iii) leverages a latent world model for dynamics and rewards prediction to ground high-level action proposals at inference time. <strong>TODO: add new results</strong>
+        Language-instructed active object localization remains a critical challenge for robots, requiring efficient exploration of partially observable environments. However, state-of-the-art approaches either struggle to generalize beyond demonstration datasets (e.g., imitation learning methods) or fail to generate physically grounded actions (e.g., VLMs). To address these limitations, we introduce <strong>World&nbsp;Models&nbsp;for&nbsp;Active&nbsp;Perception&nbsp;(WoMAP)</strong>: a recipe for training open-vocabulary object localization policies that: (i) uses a Gaussian Splatting-based real-to-sim-to-real pipeline for scalable data generation without the need for expert demonstrations, (ii) distills dense rewards signals from open-vocabulary object detectors, and (iii) leverages a latent world model for dynamics and rewards prediction to ground high-level action proposals at inference time. Rigorous simulation and hardware experiments demonstrate WoMAP's superior performance in a broad range of zero-shot object localization tasks, with more than <strong>9x</strong> and  <strong>2x</strong> higher success rates compared to VLM and diffusion policy baselines, respectively. Further, we show that WoMAP achieves strong generalization and sim-to-real transfer on a TidyBot.
       </p>
       <!-- <br>
       <video id="summary-video" class="shadow" controls preload="metadata" width="100%" poster="static/thumbnails/talk_video.jpg">
@@ -192,9 +192,6 @@
   <section id="experiment-results" class="section">
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Experiment Results</h2>
-      <p><strong>TODO</strong>
-      </p>
-      <br>
       <div class="task-block" id="task-1">
         <h3 class="title is-4 task-title">PyBullet Simulation Experiments</h3>
         <div class="task-carousel">
@@ -210,23 +207,30 @@
       <div class="task-block" id="task-1">
         <h3 class="title is-4 task-title">Gaussian Splat Simulation Experiments</h3>
         <div class="task-carousel">
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/sim0.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/sim1.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/sim2.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/sim3.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer4.jpg" preload="metadata"><source src="static/videos/experiments/sim4.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/sim5.mp4" type="video/mp4" /></video></div>
           <!-- Eight videos with poster extracted via Python script -->
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/gs0.mp4" type="video/mp4" /></video></div>
+          <!-- <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/gs0.mp4" type="video/mp4" /></video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs1.mp4" type="video/mp4" /></video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs2.mp4" type="video/mp4" /></video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/gs3.mp4" type="video/mp4" /></video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer4.jpg" preload="metadata"><source src="static/videos/experiments/gs4.mp4" type="video/mp4" /></video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/gs5.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/gs5.mp4" type="video/mp4" /></video></div> -->
         </div>
       </div>
       <div class="task-block" id="task-2">
         <h3 class="title is-4 task-title">Real Experiments</h3>
         <div class="task-carousel">
-          <!-- Eight videos -->
-          <!-- <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div> -->
-          <!-- <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/real0.mov" type="video/mp4" /></video></div> -->
+         <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer1.jpg" preload="metadata"><source src="static/videos/experiments/gs0.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs1.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer2.jpg" preload="metadata"><source src="static/videos/experiments/gs2.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer3.jpg" preload="metadata"><source src="static/videos/experiments/gs3.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer4.jpg" preload="metadata"><source src="static/videos/experiments/gs4.mp4" type="video/mp4" /></video></div>
+          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline poster="static/thumbnails/drawer5.jpg" preload="metadata"><source src="static/videos/experiments/gs5.mp4" type="video/mp4" /></video></div>
         </div>
       </div>
     </div>
