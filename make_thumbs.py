@@ -13,7 +13,7 @@ videos_dir = pathlib.Path("static/videos")
 thumbs_dir = pathlib.Path("static/thumbnails")
 thumbs_dir.mkdir(parents=True, exist_ok=True)
 
-for mp4 in videos_dir.glob("*/*.mp4"):
+for mp4 in videos_dir.glob("**/*.mp4"):
     jpg = thumbs_dir / (mp4.stem + ".jpg")
     if jpg.exists():
         continue
