@@ -1,0 +1,13 @@
+# data and cache files
+**/*.egg-info
+**/__pycache__
+**/cache
+**/data
+**/logs
+**/notes
+**/tmp_outputs
+**/wandb
+
+
+# Platform-dependent files
+*.DS_Store
