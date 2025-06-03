@@ -133,7 +133,8 @@
       margin-bottom: 3rem;
     }
 
-    .task-carousel {
+    .task-carousel,
+    .task-carousel-tidybot {
       margin-top: 1rem;
     }
 
@@ -458,7 +459,7 @@
       <!-- ===== Real-World Evaluations ===== -->
       <div class="task-block" id="task-2">
         <h3 class="title is-4 task-title">Real-World Experiments</h3>
-        <div class="task-carousel">
+        <div class="task-carousel-tidybot">
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
               loop muted playsinline poster="static/thumbnails/kitchen_kettle_2.jpg" preload="metadata">
               <source src="static/videos/experiments/evaluations/kitchen_kettle_2.mp4" type="video/mp4" />
@@ -513,7 +514,7 @@
           lighting conditions.
         </p>
 
-        <div class="task-carousel">
+        <div class="task-carousel-tidybot">
           <!-- Six videos with poster extracted via Python script -->
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
               loop muted playsinline poster="static/thumbnails/generalization_blue_keyboard.jpg" preload="metadata">
@@ -568,7 +569,7 @@
         </p>
         <br>
 
-        <div class="task-carousel">
+        <div class="task-carousel-tidybot">
           <!-- Six videos with poster extracted via Python script -->
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
               loop muted playsinline poster="static/thumbnails/target_banana_query_yellow_object.jpg"
@@ -647,6 +648,22 @@
         responsive: [
           { breakpoint: 1024, settings: { slidesToShow: 3 } },
           { breakpoint: 768, settings: { slidesToShow: 2 } },
+          { breakpoint: 480, settings: { slidesToShow: 1 } }
+        ]
+      });
+
+      // Init carousels (only those still using .task-carousel wrappers)
+      $('.task-carousel-tidybot').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: true,
+        dots: false,
+        lazyLoad: 'ondemand',
+        touchMove: true,
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 1 } },
+          { breakpoint: 768, settings: { slidesToShow: 1 } },
           { breakpoint: 480, settings: { slidesToShow: 1 } }
         ]
       });
