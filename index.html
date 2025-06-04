@@ -217,7 +217,7 @@
 
         <!-- ===== AUTHORS (three rows, no underscores) ===== -->
 
-        <!-- <div class="is-size-5 publication-authors">
+        <div class="is-size-5 publication-authors">
           <div>
             <span class="author-block"><a href="https://tenny-yinyijun.github.io/">Tenny&nbsp;Yin*</a></span>,
             <span class="author-block"><a href="https://may0mei.github.io/">Zhiting&nbsp;Mei</a></span>,
@@ -225,11 +225,11 @@
             <span class="author-block"><a href="https://lihzha.github.io/">Lihan&nbsp;Zha</a></span>
           </div>
           <div>
-            <span class="author-block"><a href="#">Miyu&nbsp;Yamane<sup>+</sup></a></span>,
             <span class="author-block"><a
                 href="https://www.linkedin.com/in/zhou-emily/">Emily&nbsp;Zhou<sup>+</sup></a></span>,
             <span class="author-block"><a
                 href="https://www.linkedin.com/in/jeremy-bao/">Jeremy&nbsp;Bao<sup>+</sup></a></span>,
+            <span class="author-block"><a href="#">Miyu&nbsp;Yamane<sup>+</sup></a></span>,
             <span class="author-block"><a href="#">Ola&nbsp;Shorinwa*</a></span>,
             <span class="author-block"><a
                 href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
@@ -239,15 +239,15 @@
         <div>
           <sup>&#42;</sup>Equal Contribution.
           <sup>+</sup>Authors contributed equally.
-        </div> -->
+        </div>
 
 
         <!-- ===== RESOURCE ICONS ===== -->
         <div class="publication-links">
-          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+          <a href="static/paper.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
             <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
           </a>
-          <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+          <a href="https://arxiv.org/abs/2506.01600" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
             <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
           </a>
           <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
@@ -259,11 +259,9 @@
         </div>
 
         <!-- ===== LAB LOGO ===== -->
-        <!--
         <figure class="image is-inline-block lab-logo">
           <img src="static/irom_princeton.png" alt="IROM Lab logo" style="max-width:500px;">
         </figure>
-        -->
       </div>
     </div>
   </section>
@@ -335,9 +333,9 @@
       </video>
       <br>
       <p>
-        We propose a world model architecture that combines a latent dynamics model with a reward model. The dynamics
-        model predicts the next state and the reward model predicts the reward signal based on the current state and
-        action. This architecture allows us to ground high-level action proposals in the physical world.
+        We propose a world model architecture that combines a latent dynamics model with a reward model to predict and evaluate expected rewards given actions, thereby grounding high-level action proposals in the physical world.
+        A central innovation of our pipeline is the use of dense reward distillation from open-vocabulary object detectors, 
+        which allows for data-efficient training without relying on image reconstruction objectives.
       </p>
     </div>
   </section>
@@ -349,10 +347,11 @@
       <p class="has-text-justified">
         We benchmark WoMAP against a VLM-based planner (VLM), diffusion policy (DP), and three world-model-only
         planners: WM-CEM,
-        WM-Grad, and WM-HR, in four PyBullet (PB) simulation environments and three Gaussian Splatting environments.
+        WM-Grad, and WM-HR, in seven challenging PyBullet (PB) and Gaussian Splatting (GS) environments, where the robot must
+        efficeintly locate the query object from an arbitrary initial view in an unseen scene configuration.
         In all tasks, WoMAP attains higher success rates and efficiency scores compared to all other methods.
-        Even when only trained on Gaussian Splat scenes (i.e., without an real-world data), WoMAP achieves strong
-        sim-to-real transfer, compared to the VLM baseline (see the paper for more details).
+        Even when only trained on Gaussian Splat simulation, WoMAP achieves strong
+        sim-to-real transfer compared to baseline (see the paper for more details).
       </p>
       <br>
 
@@ -361,42 +360,37 @@
         <h3 class="title is-4 task-title">PyBullet Simulation Experiments</h3>
         <div class="task-carousel">
           <!-- Six videos with poster extracted via Python script -->
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim0.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim0.mp4" type="video/mp4" />
+           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/0-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/0-annotated.mp4" type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim1.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim1.mp4" type="video/mp4" />
+            <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/1-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/1-annotated.mp4" type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim2.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim2.mp4" type="video/mp4" />
+            <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/2-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/2-annotated.mp4" type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim3.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim3.mp4" type="video/mp4" />
+            <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/3-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/3-annotated.mp4" type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim4.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim4.mp4" type="video/mp4" />
+            <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/4-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/4-annotated.mp4" type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim5.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim5.mp4" type="video/mp4" />
+            <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
+              poster="static/thumbnails/experiments/pb/5-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/pb/5-annotated.mp4" type="video/mp4" />
             </video></div>
         </div>
-
         <br>
-
+        
         <!-- Performance plot -->
         <img src="./static/images/pybullet_results.png" class="real-exp-img" alt="PyBullet Evaluation." />
         <p class="has-text-justified">
-          <strong>PyBullet evaluation
-            tasks and results:</strong>
-          Success rates
-          (translucent bars) and efficiency scores (solid bars) in active object
-          localization across PyBullet scenes (presented in the order of increasing difficulty) and initial-pose
+          *Success rates and efficiency scores are represented by transparent and solid bars, respectively. Results are presented in the order of increasing difficulty and initial-pose
           conditions: easy (E), medium (M), and hard (H).
         </p>
       </div>
@@ -407,85 +401,67 @@
         <h3 class="title is-4 task-title">Gaussian Splat Simulation Experiments</h3>
         <div class="task-carousel">
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim0.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim0.mp4" type="video/mp4" />
+              poster="static/thumbnails/experiments/gs/0-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/0-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim1.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim1.mp4" type="video/mp4" />
+              poster="static/thumbnails/sexperiments/gs/1-annotatedim1.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/1-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim2.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim2.mp4" type="video/mp4" />
+              poster="static/thumbnails/experiments/gs/2-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/2-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim3.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim3.mp4" type="video/mp4" />
+              poster="static/thumbnails/experiments/gs/3-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/3-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim4.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim4.mp4" type="video/mp4" />
+              poster="static/thumbnails/experiments/gs/4-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/4-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" autoplay loop muted playsinline
-              poster="static/thumbnails/sim5.jpg" preload="metadata">
-              <source src="static/videos/experiments/sim5.mp4" type="video/mp4" />
+              poster="static/thumbnails/experiments/gs/5-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/gs/5-annotated.mp4" type="video/mp4" />
             </video></div>
         </div>
         <br>
 
         <!-- Performance plot -->
         <img src="./static/images/gsplat_results.png" class="real-exp-img" alt="PyBullet Evaluation." />
-        <p class="has-text-justified">
-          <strong>Gaussian Splat evaluation
-            tasks and results.</strong>
-          WoMAP outperforms all baseline methods in all scenes and
-          initial-pose conditions.
-        </p>
       </div>
-
-      <!-- <div class="row content-container">
-        <div class="col-md-12 text-center">
-          <ul class="list-inline">
-            <li>
-              <img src="static/images/pybullet_results.png" class="real-exp-img" alt="Pybullet experiment results" />
-              <img src="static/images/gsplat_results.png" class="real-exp-img" alt="Gsplat experiment results" />
-            </li>
-          </ul>
-        </div>
-      </div> -->
-
 
       <!-- ===== Real-World Evaluations ===== -->
       <div class="task-block" id="task-2">
         <h3 class="title is-4 task-title">Real-World Experiments</h3>
-        <div class="task-carousel">
+        <p>
+          We evaluate WoMAP's sim-to-real transfer ability on 20 hardware trials for each of the 3 corresponding real-world tasks on the TidyBot. Despite trained entirely in Gaussan Splat simulation, WoMAP transfers effectively to the real world, maintaining nearly the same success rate and efficiency scores in simulation, with a worst-case performance drop of 23%. 
+        </p>
+        <br>
+        <div class="task-carousel-3">
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/kitchen_kettle_2.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/kitchen_kettle_2.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/0-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/0-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/office_banana.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/office_banana.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/1-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/1-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/random_skeleton.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/random_skeleton.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/2-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/2-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/random_scissors.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/random_scissors.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/3-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/3-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/office_keyboard.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/office_keyboard.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/5-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/5-annotated.mp4" type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/kitchen_kettle.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/kitchen_kettle_2.mp4" type="video/mp4" />
-            </video></div>
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/random_keyboard.jpg" preload="metadata">
-              <source src="static/videos/experiments/evaluations/random_keyboard.mp4" type="video/mp4" />
+              loop muted playsinline poster="static/thumbnails/experiments/evaluations/4-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/evaluations/4-annotated.mp4" type="video/mp4" />
             </video></div>
         </div>
       </div>
@@ -497,55 +473,37 @@
   <section id="generalization-properties" class="section">
     <div class="container is-max-desktop content-container">
       <h2 class="title is-3 has-text-centered">Zero-Shot Generalization</h2>
-      <p class="has-text-justified">We examine the visual and semantic generalization capabilities of WoMAP trained
-        only on nominal
-        conditions in the GS-Random on 10 scenes with 30 trajectories each.
-      </p>
-      <br>
-
       <!-- ===== Visual Generalization ===== -->
       <div class="visual-generalization-block" id="map-1">
         <h3 class="title is-4 task-title">Visual Generalization</h3>
         <p class="has-text-justified">
-          Here, we evaluate WoMAP in out-of-distribution
-          lighting and background conditions.
-          WoMAP generalizes well even under extreme
-          lighting conditions.
+          We evaluate WoMAP in out-of-distribution lighting and background conditions with the model trained on nominal conditions in simulation, demonstrating the robustness of our dynamics and rewards prediction module, and the rich visual-semantic information encoded in the latent state.
         </p>
-
-        <div class="task-carousel">
-          <!-- Six videos with poster extracted via Python script -->
+        <br>
+        <div class="task-carousel-3">
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_blue_keyboard.jpg" preload="metadata">
-              <source src="static/videos/experiments/visual_generalization/generalization_blue_keyboard.mp4"
+              loop muted playsinline poster="static/thumbnails/experiments/visual_generalization/0-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/visual_generalization/0-annotated.mp4"
                 type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_purple_scissors.jpg" preload="metadata">
-              <source src="static/videos/experiments/visual_generalization/generalization_purple_scissors.mp4"
+              loop muted playsinline poster="static/thumbnails/experiments/visual_generalization/1-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/visual_generalization/1-annotated.mp4"
                 type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_red_skeleton.jpg" preload="metadata">
-              <source src="static/videos/experiments/visual_generalization/generalization_red_skeleton.mp4"
+              loop muted playsinline poster="static/thumbnails/experiments/visual_generalization/2-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/visual_generalization/2-annotated.mp4"
                 type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_flowers_background_glasses.jpg"
-              preload="metadata">
-              <source
-                src="static/videos/experiments/visual_generalization/generalization_flowers_background_glasses.mp4"
+              loop muted playsinline poster="static/thumbnails/experiments/visual_generalization/3-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/visual_generalization/3-annotated.mp4"
                 type="video/mp4" />
             </video></div>
           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_flowers_background_kettle.jpg"
-              preload="metadata">
-              <source src="static/videos/experiments/visual_generalization/generalization_flowers_background_kettle.mp4"
-                type="video/mp4" />
-            </video></div>
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/generalization_red_scissors.jpg" preload="metadata">
-              <source src="static/videos/experiments/visual_generalization/generalization_red_scissors.mp4"
+              loop muted playsinline poster="static/thumbnails/experiments/visual_generalization/4-annotated.jpg" preload="metadata">
+              <source src="static/videos/experiments/visual_generalization/4-annotated.mp4"
                 type="video/mp4" />
             </video></div>
         </div>
@@ -557,72 +515,70 @@
       <div class="semantic-generalization-block" id="sem-gen-1">
         <h3 class="title is-4 task-title">Semantic Generalization</h3>
         <p class="has-text-justified">
-          we evaluate semantic generalization of WoMAP to unseen target objects and task instructions across two axes:
-          (i) to unseen language instructions to find target objects that were seen during training and (ii) to unseen
+          We evaluate WoMAP to unseen target objects and task instructions across two axes:
+          (i) unseen language instructions for finding target objects that were seen during training, and (ii) unseen
           target objects with unseen language instructions.
-          We train WoMAP on only a single instance of a "banana," "scissors," and "mug" and ask WoMAP to either find a
-          previously-seen
-          object with a novel user instruction (e.g., find a yellow object, when trained on a banana)
-          or find an unseen object with an unseen instruction (e.g., find a pair of pliers.)
-          WoMAP achieves strong zero-shot semantic generalization, summarized in the following figure.
+          WoMAP achieves strong zero-shot semantic generalization, and we observe a positive correlation in semantic similarity (cosine
+          distance) of the objects/queries with the most similar object present in our training objects.
         </p>
         <br>
 
-        <div class="task-carousel">
-          <!-- Six videos with poster extracted via Python script -->
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/target_banana_query_yellow_object.jpg"
+        <div class="task-carousel-3">
+           <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
+              loop muted playsinline poster="static/thumbnails/experiments/semantic_generalization/0-annotated.jpg"
               preload="metadata">
-              <source src="static/videos/experiments/semantic_generalization/target_banana_query_yellow_object.mp4"
+              <source src="static/videos/experiments/semantic_generalization/0-annotated.mp4"
                 type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/target_pliers_query_pliers.jpg" preload="metadata">
-              <source src="static/videos/experiments/semantic_generalization/target_pliers_query_pliers.mp4"
+            <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
+              loop muted playsinline poster="static/thumbnails/experiments/semantic_generalization/1-annotated.jpg"
+              preload="metadata">
+              <source src="static/videos/experiments/semantic_generalization/1-annotated.mp4"
                 type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/target_mug_query_coffee.jpg" preload="metadata">
-              <source src="static/videos/experiments/semantic_generalization/target_mug_query_coffee.mp4"
+            <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
+              loop muted playsinline poster="static/thumbnails/experiments/semantic_generalization/2-annotated.jpg"
+              preload="metadata">
+              <source src="static/videos/experiments/semantic_generalization/2-annotated.mp4"
                 type="video/mp4" />
             </video></div>
-          <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
-              loop muted playsinline poster="static/thumbnails/target_scissors_query_blades.jpg" preload="metadata">
-              <source src="static/videos/experiments/semantic_generalization/target_scissors_query_blades.mp4"
+            <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
+              loop muted playsinline poster="static/thumbnails/experiments/semantic_generalization/3-annotated.jpg"
+              preload="metadata">
+              <source src="static/videos/experiments/semantic_generalization/3-annotated.mp4"
+                type="video/mp4" />
+            </video></div>
+            <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;" autoplay
+              loop muted playsinline poster="static/thumbnails/experiments/semantic_generalization/4-annotated.jpg"
+              preload="metadata">
+              <source src="static/videos/experiments/semantic_generalization/4-annotated.mp4"
                 type="video/mp4" />
             </video></div>
         </div>
         <br>
-
-
         <!-- Semantic generalization performance plot -->
         <img src="./static/images/semantic_generalization_banana_scissors_mug.png" alt="Semantic Generalization." />
-        <p class="has-text-justified">
-          <strong>Generalization plots for unseen queries and objects in the same category:</strong> (left)
-          <i>banana</i>,
-          (center) <i>scissors</i>, (right) <i>mug</i>. We see a positive correlation in semantic similarity (cosine
-          distance) of the objects/queries with the most similar object present in our training objects, and the
-          efficiency score suggesting the model's performance.
-        </p>
       </div>
     </div>
     </div>
-
-    <!-- </strong></p>
-    <br>
-    <p><strong>TODO: 4 videos in a 2 by 2 grid, scatter plot for query/object relevance on the right</strong></p>
-    </div> -->
   </section>
 
-  <!--
+  
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>
-      </code></pre>
+      <pre><code>@misc{yin2025womapworldmodelsembodied,
+        title={WoMAP: World Models For Embodied Open-Vocabulary Object Localization}, 
+        author={Tenny Yin and Zhiting Mei and Tao Sun and Lihan Zha and Emily Zhou and Jeremy Bao and Miyu Yamane and Ola Shorinwa and Anirudha Majumdar},
+        year={2025},
+        eprint={2506.01600},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO},
+        url={https://arxiv.org/abs/2506.01600}, 
+    }</code></pre>
     </div>
   </section>
-  -->
+ 
   <br>
   <center class="is-size-10">
     The website design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
@@ -660,6 +616,32 @@
           $(this).slick(deltaX < 0 ? 'slickPrev' : 'slickNext');
         }
       });
+
+      $('.task-carousel-3').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: true,
+        dots: false,
+        lazyLoad: 'ondemand',
+        touchMove: true,
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 3 } },
+          { breakpoint: 768, settings: { slidesToShow: 2 } },
+          { breakpoint: 480, settings: { slidesToShow: 1 } }
+        ]
+      });
+
+      // Horizontal track‑pad scroll → carousel navigation; let vertical scroll bubble up
+      $('.task-carousel-3').on('wheel', function (e) {
+        const deltaX = e.originalEvent.deltaX;
+        const deltaY = e.originalEvent.deltaY;
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+          e.preventDefault();
+          $(this).slick(deltaX < 0 ? 'slickPrev' : 'slickNext');
+        }
+      });
+
     });
   </script>
 </body>
