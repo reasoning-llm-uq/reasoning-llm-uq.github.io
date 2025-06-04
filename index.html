@@ -133,7 +133,8 @@
             margin-bottom: 3rem;
         }
 
-        .task-carousel {
+        .task-carousel,
+        .task-carousel-exp {
             margin-top: 1rem;
         }
 
@@ -468,7 +469,7 @@
                     efficiency scores in simulation, with a worst-case performance drop of 23%.
                 </p>
                 <br>
-                <div class="task-carousel-3">
+                <div class="task-carousel-exp">
                     <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;"
                             autoplay loop muted playsinline
                             poster="static/thumbnails/experiments/evaluations/0-annotated.jpg" preload="metadata">
@@ -518,7 +519,7 @@
                     prediction module, and the rich visual-semantic information encoded in the latent state.
                 </p>
                 <br>
-                <div class="task-carousel-3">
+                <div class="task-carousel-exp">
                     <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;"
                             autoplay loop muted playsinline
                             poster="static/thumbnails/experiments/visual_generalization/0-annotated.jpg"
@@ -573,7 +574,7 @@
                 </p>
                 <br>
 
-                <div class="task-carousel-3">
+                <div class="task-carousel-exp">
                     <div class="video-thumb"><video class="thumb-video" controls onloadstart="this.playbackRate = 1.0;"
                             autoplay loop muted playsinline
                             poster="static/thumbnails/experiments/semantic_generalization/0-annotated.jpg"
@@ -674,8 +675,8 @@
                 }
             });
 
-            $('.task-carousel-3').slick({
-                slidesToShow: 3,
+            $('.task-carousel-exp').slick({
+                slidesToShow: 2,
                 slidesToScroll: 1,
                 infinite: false,
                 arrows: true,
@@ -683,14 +684,22 @@
                 lazyLoad: 'ondemand',
                 touchMove: true,
                 responsive: [
-                    { breakpoint: 1024, settings: { slidesToShow: 3 } },
-                    { breakpoint: 768, settings: { slidesToShow: 2 } },
+                    { breakpoint: 1024, settings: { slidesToShow: 1 } },
+                    { breakpoint: 768, settings: { slidesToShow: 1 } },
                     { breakpoint: 480, settings: { slidesToShow: 1 } }
                 ]
             });
 
             // Horizontal track‑pad scroll → carousel navigation; let vertical scroll bubble up
-            $('.task-carousel-3').on('wheel', function (e) {
+            $('.task-carousel').on('wheel', function (e) {
+                const deltaX = e.originalEvent.deltaX;
+                const deltaY = e.originalEvent.deltaY;
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    e.preventDefault();
+                    $(this).slick(deltaX < 0 ? 'slickPrev' : 'slickNext');
+                }
+            });
+            $('.task-carousel-exp').on('wheel', function (e) {
                 const deltaX = e.originalEvent.deltaX;
                 const deltaY = e.originalEvent.deltaY;
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
