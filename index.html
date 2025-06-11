@@ -191,6 +191,10 @@
             padding-bottom: 2.5rem;
         }
 
+        #sim-to-real-1 {
+            margin-bottom: 0;
+        }
+
         /* default Bulma ≈2.5rem */
         #sim-robot.section {
             padding-top: 2.5rem;
@@ -213,37 +217,37 @@
     <section class="hero section">
         <div class="hero-body">
             <div class="container is-max-widescreen has-text-centered">
-                <h1 class="title is-2 publication-title">WoMAP: World Models For Embodied Open-Vocabulary Object
+                <h1 class="title is-2 publication-title">WoMAP: World Models For Embodied <br /> Open-Vocabulary Object
                     Localization
                 </h1>
 
                 <!-- ===== AUTHORS (three rows, no underscores) ===== -->
-                <!--
-        <div class="is-size-5 publication-authors">
-          <div>
-            <span class="author-block"><a href="https://tenny-yinyijun.github.io/">Tenny&nbsp;Yin*</a></span>,
-            <span class="author-block"><a href="https://may0mei.github.io/">Zhiting&nbsp;Mei</a></span>,
-            <span class="author-block"><a href="#">Tao&nbsp;Sun</a></span>,
-            <span class="author-block"><a href="https://lihzha.github.io/">Lihan&nbsp;Zha</a></span>
-          </div>
-          <div>
-            <span class="author-block"><a
-                href="https://www.linkedin.com/in/zhou-emily/">Emily&nbsp;Zhou<sup>+</sup></a></span>,
-            <span class="author-block"><a
-                href="https://www.linkedin.com/in/jeremy-bao/">Jeremy&nbsp;Bao<sup>+</sup></a></span>,
-            <span class="author-block"><a href="https://www.linkedin.com/in/miyu-yamane/">Miyu&nbsp;Yamane<sup>+</sup></a></span>,
-            <span class="author-block"><a href="#">Ola&nbsp;Shorinwa*</a></span>,
-            <span class="author-block"><a
-                href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
-          </div>
-        </div>
 
-        <div>
-          <sup>&#42;</sup>Equal Contribution.
-          <sup>+</sup>Authors contributed equally.
-        </div>
-        -->
+                <div class="is-size-5 publication-authors">
+                    <div>
+                        <span class="author-block"><a
+                                href="https://tenny-yinyijun.github.io/">Tenny&nbsp;Yin*</a></span>,
+                        <span class="author-block"><a href="https://may0mei.github.io/">Zhiting&nbsp;Mei</a></span>,
+                        <span class="author-block"><a href="#">Tao&nbsp;Sun</a></span>,
+                        <span class="author-block"><a href="https://lihzha.github.io/">Lihan&nbsp;Zha</a></span>,
+                        <span class="author-block"><a
+                                href="https://www.linkedin.com/in/zhou-emily/">Emily&nbsp;Zhou<sup>+</sup></a></span>,
+                    </div>
+                    <div>
+                        <span class="author-block"><a
+                                href="https://www.linkedin.com/in/jeremy-bao/">Jeremy&nbsp;Bao<sup>+</sup></a></span>,
+                        <span class="author-block"><a
+                                href="https://www.linkedin.com/in/miyu-yamane/">Miyu&nbsp;Yamane<sup>+</sup></a></span>,
+                        <span class="author-block"><a href="#">Ola&nbsp;Shorinwa*</a></span>,
+                        <span class="author-block"><a
+                                href="https://irom-lab.princeton.edu/majumdar/">Anirudha&nbsp;Majumdar</a></span>
+                    </div>
+                </div>
 
+                <div>
+                    <sup>&#42;</sup>Equal Contribution.
+                    <sup>+</sup>Authors contributed equally.
+                </div>
 
                 <!-- ===== RESOURCE ICONS ===== -->
                 <div class="publication-links">
@@ -255,8 +259,8 @@
                         target="_blank" rel="noopener">
                         <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
                     </a>
-                    <a href="https://www.youtube.com/watch?v=KPFl68mqIJY" class="external-link button is-normal is-rounded is-dark" target="_blank"
-                        rel="noopener">
+                    <a href="https://www.youtube.com/watch?v=i1qSlALio-o"
+                        class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span>
                     </a>
                     <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank"
@@ -266,11 +270,11 @@
                 </div>
 
                 <!-- ===== LAB LOGO ===== -->
-                <!--
-        <figure class="image is-inline-block lab-logo">
-          <img src="static/irom_princeton.png" alt="IROM Lab logo" style="max-width:500px;">
-        </figure>
-        -->
+
+                <figure class="image is-inline-block lab-logo">
+                    <img src="static/irom_princeton.png" alt="IROM Lab logo" style="max-width:500px;">
+                </figure>
+
             </div>
         </div>
     </section>
@@ -460,7 +464,7 @@
             </div>
 
             <!-- ===== Real-World Evaluations ===== -->
-            <div class="task-block" id="task-2">
+            <div class="task-block" id="sim-to-real-1">
                 <h3 class="title is-4 task-title">Zero-Shot Sim-to-Real Transfer</h3>
                 <p>
                     We evaluate WoMAP's sim-to-real transfer ability on 20 hardware trials for each of the 3
@@ -503,7 +507,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- ===== GENERALIZATION PROPERTIES ===== -->
@@ -511,7 +514,7 @@
         <div class="container is-max-desktop content-container">
             <h2 class="title is-3 has-text-centered">Zero-Shot Generalization</h2>
             <!-- ===== Visual Generalization ===== -->
-            <div class="visual-generalization-block" id="map-1">
+            <div class="visual-generalization-block" id="vis-gen-1">
                 <h3 class="title is-4 task-title">Visual Generalization</h3>
                 <p class="has-text-justified">
                     We evaluate WoMAP in out-of-distribution lighting and background conditions with the model trained
@@ -557,8 +560,8 @@
                         </video></div>
                 </div>
             </div>
-            <!-- <br> -->
-            <!-- <br> -->
+            <br>
+            <br>
 
             <!-- ===== Semantic Generalization ===== -->
             <div class="semantic-generalization-block" id="sem-gen-1">
@@ -611,31 +614,32 @@
                                 type="video/mp4" />
                         </video></div>
                 </div>
-                <!-- <br> -->
+                <br>
                 <!-- Semantic generalization performance plot -->
-                <img src="./static/images/semantic_generalization_banana_scissors_mug.png"
+                <img src="./static/images/semantic_generalization_banana_scissors_mug.jpg"
                     alt="Semantic Generalization." />
             </div>
         </div>
         </div>
     </section>
 
-    <!--
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{yin2025womapworldmodelsembodied,
-        title={WoMAP: World Models For Embodied Open-Vocabulary Object Localization}, 
-        author={Tenny Yin and Zhiting Mei and Tao Sun and Lihan Zha and Emily Zhou and Jeremy Bao and Miyu Yamane and Ola Shorinwa and Anirudha Majumdar},
-        year={2025},
-        eprint={2506.01600},
-        archivePrefix={arXiv},
-        primaryClass={cs.RO},
-        url={https://arxiv.org/abs/2506.01600}, 
-    }</code></pre>
-    </div>
-  </section>
-  -->
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{yin2025womapworldmodelsembodied,
+                title={WoMAP: World Models For Embodied Open-Vocabulary Object Localization}, 
+                author={Tenny Yin and Zhiting Mei and Tao Sun and Lihan Zha and Emily Zhou and Jeremy Bao and Miyu Yamane and Ola Shorinwa and Anirudha Majumdar},
+                year={2025},
+                eprint={2506.01600},
+                archivePrefix={arXiv},
+                primaryClass={cs.RO},
+                url={https://arxiv.org/abs/2506.01600}, 
+            }
+            </code></pre>
+        </div>
+    </section>
+
 
     <br>
     <center class="is-size-10">
