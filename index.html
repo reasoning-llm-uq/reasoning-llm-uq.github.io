@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WoMAP: World Models For Embodied Open-Vocabulary Object Localization</title>
+    <title>Reasoning about Uncertainty: Do Reasoning Models Know When They Don't Know?</title>
 
     <!--  =====  FONTS & ICONS  =====  -->
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
@@ -217,8 +217,12 @@
     <section class="hero section">
         <div class="hero-body">
             <div class="container is-max-widescreen has-text-centered">
-                <h1 class="title is-2 publication-title">Reasoning about Uncertainty: <br /> Do Reasoning Models Know When They Don't Know?
+                <h1 class="title is-1 publication-title">
+                    Reasoning about Uncertainty: <br />
                 </h1>
+                <h2 class="subtitle is-2 publication-title">
+                    Do Reasoning Models Know When They Don't Know?
+                </h2>
 
                 <!-- ===== AUTHORS (three rows, no underscores) ===== -->
 
@@ -267,6 +271,17 @@
         </div>
     </section>
 
+    <!-- ===== TL; DR (inline style) ===== -->
+    <div class="container is-max-desktop content-container has-text-centered" style="margin-bottom:1.5rem;">
+        <div style="background:#f7f7f7; border-radius:16px; padding:1.25em 1.5em; display:inline-block; box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+            <strong><span style="color:#910101; font-size:1.5em;">TL;DR:</span></strong>
+            <span style="font-size:1.5em;">
+                Reasoning models are generally <em>overconfident</em> and become even more overconfident with deeper reasoning.
+                To improve their calibration, we introduce <em><span style="color:#910101;">introspective uncertainty quantification</span></em> (UQ), which allows reasoning models to explicitly reason about their chain-of-thought traces.
+            </span>
+        </div>
+    </div>
+
     <!-- ===== OVERVIEW ===== -->
     <section id="overview" class="section">
         <div class="container is-max-desktop content-container has-text-centered">
@@ -274,9 +289,6 @@
                 <source src="static/videos/anchor.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <p style="margin-top:1rem;">
-                TODO: overview
-            </p>
         </div>
     </section>
 
@@ -284,24 +296,24 @@
     <section id="abstract" class="section">
         <div class="container is-max-desktop content-container">
             <h2 class="title is-3 has-text-centered">Abstract</h2>
-            <p> TODO: bold/emphasize keywords
+            <p> 
                 Reasoning language models have set state-of-the-art (SOTA) records on many challenging benchmarks, 
                 enabled by multi-step reasoning induced using reinforcement learning. 
                 However, like previous language models, reasoning models are prone to generating confident, 
                 plausible responses that are incorrect (hallucinations). 
                 Knowing when and how much to trust these models is critical to the safe deployment of reasoning models 
-                in real-world applications. To this end, we explore uncertainty quantification of reasoning models in this work. 
+                in real-world applications. To this end, we explore <em>uncertainty quantification</em> of reasoning models in this work. 
                 Specifically, we ask three fundamental questions: 
-                First, are reasoning models well-calibrated? 
-                Second, does deeper reasoning improve model calibration? 
+                First, are reasoning models <em>well-calibrated?</em> 
+                Second, does <em>deeper reasoning</em> improve model calibration? 
                 Finally, inspired by humans' innate ability to double-check their thought processes to 
                 verify the validity of their answers and their confidence, we ask: 
-                can reasoning models improve their calibration by explicitly reasoning about their chain-of-thought traces? 
-                We introduce introspective uncertainty quantification (UQ) to explore this direction. 
+                can reasoning models improve their calibration by <em>explicitly reasoning</em> about their chain-of-thought traces? 
+                We introduce <b><em><span style="color:#910101;">introspective uncertainty quantification</span></em></b> (UQ) to explore this direction. 
                 In extensive evaluations on SOTA reasoning models across a broad range of benchmarks, 
-                we find that reasoning models: (i) are typically overconfident, with self-verbalized confidence estimates often 
-                greater than 85% particularly for incorrect responses, (ii) become even more overconfident with deeper reasoning, 
-                and (iii) can become better calibrated through introspection (e.g., o3-Mini and DeepSeek R1) but not uniformly 
+                we find that reasoning models: (i) <em> are typically overconfident, with self-verbalized confidence estimates often 
+                greater than 85% particularly for incorrect responses</em>, (ii) <em> become even more overconfident with deeper reasoning</em>, 
+                and (iii) <em> can become better calibrated through introspection </em> (e.g., o3-Mini and DeepSeek R1) <em> but not uniformly </em>
                 (e.g., Claude 3.7 Sonnet becomes more poorly calibrated). Lastly, we conclude with important research directions 
                 to design necessary UQ benchmarks and improve the calibration of reasoning models.
             </p>
@@ -317,27 +329,94 @@
     <!-- ===== Body text ===== -->
     <section id="body" class="section">
         <div class="container is-max-desktop content-container">
-            <h2 class="title is-3 has-text-centered">TODO: Body</h2>
-                            <img src="static/images/calibration_of_reasoning_models_avg_prompts.png     " class="real-exp-img" alt="PyBullet Evaluation." />
+            <h2 class="title is-3 has-text-centered">Are reasoning models calibrated?</h2>
+            <img src="static/images/calibration_of_reasoning_models_avg_prompts.png" class="real-exp-img" alt="PyBullet Evaluation." />
+            <br>
+
+            <p>
+                Recent benchmarks reveal that reasoning models are well-calibrated on older datasets like ARC-Challenge and MMLU, but their calibration drops on newer, more challenging benchmarks such as StrategyQA, GPQA, and SimpleQA. This suggests that as benchmarks evolve, models struggle to maintain reliable confidence estimates. Calibration on one dataset does not guarantee good calibration on others, especially as models achieve near-perfect accuracy and overconfidence becomes harder to detect. As a result, continually updating benchmarks is crucial for accurately assessing and improving uncertainty quantification in reasoning models.
+            </p>
+            </p>
+
+            <!-- <img src="static/images/reasoning/Reliability_hard-1.png" class="real-exp-img" alt="Introspective UQ." /> -->
+
+            <br>
+            <p> 
+            <strong>Is accuracy correlated with calibration in reasoning models?</strong> The ECE is strongly correlated with accuracy
+            in state-of-the-art reasoning models. In essence, the self-verbalized confidence of reasoning models is generally not
+            trustworthy in problems where they achieve low accuracy. Remarkably, Claude remains well-calibrated even in these
+            low-accuracy settings. We observe the same trends in the correlation between accuracy and the MCE.
+            </p>
+            <img src="static/images/reasoning/linear_fit_correlation_accuracy_calibration-1.png" class="real-exp-img" alt="Introspective UQ." />
+
+            <!-- <img src="static/images/reasoning/calibration_vs_prompts-1.png" class="real-exp-img" alt="Introspective UQ." /> -->
+
             <br>
             <p>
-                TODO: body text
+                <strong>Does increasing reasoning depth improve calibration?</strong> Deeper reasoning leads to overall higher accuracy;
+                however, as the accuracy of these models saturate, reasoning models become even more overconfident.
             </p>
+            </p>
+            <img src="static/images/reasoning/calibration_vs_reasoning_effort-1.png" class="real-exp-img" alt="Introspective UQ." />
+
+            <br>
+            <p>
+                <strong>Deeper Reasoning vs. Underconfidence/Overconfidence?</strong> Reasoning models become more overconfident
+                with deeper reasoning, evidenced by the increase in the density of samples in higher-confidence bins
+                (e.g., the 90%-95% interval) without a corresponding increase in accuracy.
+            </p>
+            <img src="static/images/reasoning/reliability_reasoning_effort-1.png" class="real-exp-img" alt="Introspective UQ." />
+
         </div>
     </section>
 
     <!-- ===== Introspective UQ ===== -->
     <section id="introspective" class="section">
         <div class="container is-max-desktop content-container">
-            <h2 class="title is-3 has-text-centered">Introspective UQ</h2>
+            <h2 class="title is-3 has-text-centered">Introspective UQ: Reasoning about Confidence</h2>
             <video class="overview-video" autoplay loop muted playsinline poster="static/thumbnails/gaussian-splat.jpg">
                 <source src="static/videos/introspective.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <br>
             <p>
-                TODO: introspective UQ
+                In this section, we explore whether reasoning models can become <em>better calibrated</em> by explicitly reasoning about their own uncertainty. 
+                We introduce a <em>two-stage <span style="color:#910101;">introspective uncertainty quantification (UQ)</span></em> process: First, the model answers a question and provides its confidence.
+                Then, a fresh instance of the model reviews the reasoning trace from the first stage, searching for flaws and updating its confidence estimate.
+                We test three prompt strategies—<em><b>IUQ-Low</b></em>, <em><b>IUQ-Medium</b></em>, and <em><b>IUQ-High</b></em>—each increasing in conservativeness and critical self-reflection.
+                Notably, the model is not asked to change its answer, only to reassess its confidence based on introspection. 
+                This approach helps us understand if models can <em>self-correct overconfidence</em> by critically evaluating their own reasoning, a step toward safer and more reliable AI systems. (<em>Gemini</em> is excluded from these results due to limited support for reasoning trace analysis.)
             </p>
+
+            <br>
+            <p>  First, we show the effect of introspective UQ on the calibration of the reasoning models on average. </p>
+            <img src="static/images/introspective/introspective_reasoning_calibration_average.png" class="real-exp-img" alt="Introspective UQ." />
+            <br>
+            <p>
+                Calibration of reasoning models improves with introspective uncertainty quantification, particularly in challenging datasets, e.g., SimpleQA, with more conservative prompts, e.g., IUQ-Medium and IUQ-High.           
+            </p>
+            <br>
+
+            <br>
+            <p> Next, we show the effect of introspective UQ on the overconfidence/underconfidence of reasoning models on average. </p>
+            <img src="static/images/introspective/reliability_introspective_reasoning_average.png" class="real-exp-img" alt="Introspective UQ." />
+            <br>
+            <p>
+                More critical introspection, e.g., IUQ-Medium and IUQ-High, improves the calibration of reasoning models, mitigating model overconfidence, unlike IUQ-Low.
+            </p>
+            <br>
+
+            <p> The benefits of introspective UQ can also be seen in Deepseek and o3-mini individually. However, since Claude is already well calibrated, introspective UQ can introduce unnecessary conservatism. </p>
+            <img src="static/images/introspective/introspective_reasoning_calibration_models.png" class="real-exp-img" alt="Introspective UQ." />
+            <br>
+            <p>
+                Introspective UQ improves the calibration of DeepSeek and o3-Mini, especially in the challenging dataset SimpleQA, but degrades the calibration of Claude.
+            </p>        
+
+            <br> 
+            <p> Through introspection, DeepSeek and o3-Mini become less overconfident, especially with IUQ-Medium and IUQ-High, unlike Claude, which becomes more overconfident. </p>
+            <img src="static/images/introspective/reliability_introspective_reasoning_models.png" class="real-exp-img" alt="Introspective UQ." />
+            <br>
         </div>
     </section>
 
